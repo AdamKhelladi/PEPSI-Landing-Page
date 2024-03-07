@@ -1,0 +1,406 @@
+
+/* Start Var */
+:root {
+  --main-color: rgb(0, 88, 252);
+  --secondary-color: #a4d3ff;
+  --main-transition: .3s;
+  --section-padding: 100px;
+}
+/* Start Var */
+
+/* Start Global Rules  */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #0400ff;
+  font-family: "Roboto";
+}
+
+ul {
+  list-style: none;
+}
+
+/* Start Header */
+.header {
+  position: relative;
+  padding: 20px 100px 20px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  z-index: 1;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0;
+  top: 0;
+  left: 0;
+  background-color: #0400ff;
+  opacity: 0;
+  z-index: 2;
+  animation: header-animation 1s ease-in-out; 
+}
+
+@keyframes header-animation {
+  0% {
+    opacity: 1;
+    height: 110%;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.header .logo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.header .logo img {
+  width: 40px;
+  transition: var(--main-transition);
+  border-radius: 50%;
+}
+
+.header .logo:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px white ;
+  margin-right: 5px;
+}
+
+.header .logo span {
+  color: white;
+  font-size: 23px;
+  font-weight: 300;
+}
+
+.header ul {
+  color: #ccc;
+  display: flex;
+  align-items: center;
+}
+
+.header ul li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: var(--main-transition);
+  height: 70px;
+}
+
+.header ul li::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 3px;
+  top: 0;
+  left: 0;
+  background-color: white;
+  transition: var(--main-transition);
+}
+
+.header ul li::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #cccccc4b;
+  transition: var(--main-transition);
+  z-index: -1;
+}
+
+.header .active {
+  color: white;
+}
+
+.header ul li:hover {
+  color: white;
+}
+
+.header ul li:hover::before,
+.header ul li:hover::after {
+  width: 100%;
+}
+
+.header .icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header .icons i {
+  font-weight: 900;
+  color: #ccc;
+  font-size: 20px;
+  transition: var(--main-transition);
+  cursor: pointer;
+}
+
+.header .icons i:hover {
+  color: white;
+}
+
+@media (max-width: 992px) {
+  .header {
+    flex-direction: column;
+    height: 80px;
+    gap: 10px;
+    padding-top: 20;
+  }
+  .header .logo img {
+    width: 30px;
+  }
+  .header .logo span {
+    font-size: 16px;
+  }
+  .header ul li {
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+.header .toggle {
+  display: none;
+  color: white;
+  font-size: 20px;
+  transition: var(--main-transition);
+  cursor: pointer;
+}
+
+.header .menu {
+  display: none;
+}
+
+.header .toggle + .menu {
+  display: none;
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 50px;
+  right: 5%;
+  width: 60%;
+  background-color: rgb(255, 255, 255, 0.9);
+  padding: 15px;
+  border-radius: 8px;
+}
+.header .toggle + .menu p {
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-size: 17px;
+  font-weight: 500;
+  color: black;
+  cursor: pointer;
+  transition: var(--main-transition);
+}
+
+.header .toggle + .menu p:not(:last-child) {
+  border-bottom: 1px solid rgb(0, 88, 252);
+  padding-bottom: 15px;
+}
+
+.header .toggle + .menu p:not(:first-child) {
+  padding-top: 15px;
+}
+
+.header .toggle + .menu p:hover {
+  color:rgb(0, 88, 252);
+}
+
+.header .toggle + .menu span:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 668px) {
+  .header {
+    padding: 0 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+  }
+  .header ul {
+    display: none;
+  }
+  .header .toggle {
+    display: block;
+  }
+}
+/* End Header */
+
+/* Start Landing */
+.landing {
+  position: relative;
+  height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: 0 50px;
+}
+
+.landing::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 80%;
+  top: 10px;
+  left: 0;
+  background-color: #0400ff;
+  z-index: 2;
+  animation: landing-animation 1.5s ease-in-out;
+}
+
+@keyframes landing-animation {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+.landing::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0;
+  top: 80%;
+  left: 0;
+  background-color: #0400ff;
+  z-index: 3;
+  animation: three-pepsi-animation 1.5s ease-in-out;
+}
+
+@keyframes three-pepsi-animation {
+  0% {
+    height: 18%;
+  }
+  100% {
+    height: 0;
+  }
+}
+
+
+.landing .image img {
+  margin-top: -100px;
+  width: 230px;
+}
+
+.landing .text {
+  margin-top: -100px;
+  color: white;
+  max-width: 600px;
+}
+
+.landing .text h2 {
+  font-size: 50px;
+}
+
+.landing .text h1 {
+  font-size: 55px;
+  margin: 0;
+}
+
+.landing .text p {
+  margin-top: 35px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #eee;
+  line-height: 1.5;
+}
+
+.landing .three-pepsi {
+  position: absolute;
+  width: 100px;
+  bottom: 30px;
+  padding-bottom: 5px;
+  box-shadow: 0 5px 10px rgba(255, 255, 255, 0.2); /* Adjust the values as needed */
+  animation: updown 2s ease-in-out infinite;
+}
+
+@keyframes updown {
+  0%, 100% {
+    transform: translateY(5px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.landing a {
+  text-decoration: none;
+  color: #ccc;
+  background-color: black;
+  border-radius: 6px;
+  font-size: 17px;
+  font-weight: 500;
+  padding: 10px 14px;
+  margin-top: 20px;
+  display: block;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: var(--main-transition);
+}
+
+.landing a:hover {
+  box-shadow: 0 0 10px rgb(206, 206, 206) inset;
+}
+
+@media (max-width: 992px) {
+  .landing .text h2 {
+    font-size: 40px;
+  }
+  .landing .text h1 {
+    font-size: 45px;
+  }
+}
+
+@media (max-width: 668px) {
+  .landing {
+    gap: 0;
+  }
+  .landing .image img {
+    display: none;
+  }
+  .landing .text {
+    text-align: center;
+    width: 100%;
+  }
+  .landing .text h2 {
+    font-size: 30px;
+  }
+  .landing .text h1 {
+    font-size: 35px;
+  }
+  .landing .text p {
+    font-size: 14px;
+  }
+  .landing a {
+    margin: 20px auto;
+  }
+}
+
+/* Start Landing */
