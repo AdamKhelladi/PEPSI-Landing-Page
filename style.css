@@ -401,6 +401,9 @@ ul {
   .landing a {
     margin: 20px auto;
   }
+  .landing .three-pepsi {
+    bottom: 40px
+  }
 }
 
 /* Start Landing */
